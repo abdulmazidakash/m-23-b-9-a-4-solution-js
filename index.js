@@ -63,3 +63,50 @@ console.log(checkName('RAFEE'));
 console.log(checkName('jhankar'));
 console.log(checkName(199));
 console.log(checkName(['Rashed']));
+
+//problem 3--------------------------
+function deleteInvalids (array) {
+	if (!Array.isArray(array)){
+		return 'Invalid Array';
+	}
+	let numberArray = [];
+	for (let element of array) {
+		if (typeof element === 'number' && isNaN(element) === false){
+			// console.log(element);
+			numberArray.push(element);
+		}
+	}
+	return numberArray;
+}
+
+console.log(deleteInvalids([1, null, undefined, 18, -19, NaN, '12',  [1, 2], { ob: 'lala'}]));
+console.log(deleteInvalids(['1', {num: 2}, NaN]));
+console.log(deleteInvalids([1, 2, -3]));
+console.log(deleteInvalids({num: [1, 2, -3]}));
+
+// console.log(typeof NaN);
+// console.log(isNaN(45));
+
+//problem -4--------------------------------------
+
+function password (obj) {
+	if ( 
+		obj.name === undefined || 
+		obj.birthYear === undefined ||
+		obj.siteName === undefined || 
+		obj.birthYear.toString().length !== 4) {
+		return 'Invalid';
+	}
+	let capitalSiteName = obj.siteName[0].toUpperCase() + obj.siteName.slice(1);
+	let passwordString = capitalSiteName + '#' + obj.name + '@' + obj.birthYear;
+	return passwordString;
+}
+
+console.log(password({ name: 'kolimuddin', birthYear: 1999, siteName: 'google'}));
+console.log(password({ name: 'rahat', birthYear: 2002, siteName: 'Facebook'}));
+console.log(password({ name: 'toky', birthYear: 200, siteName: 'Facebook'}));
+console.log(password({ name: 'maisha', birthYear: 2002}));
+
+// let birthYear = 1995;
+// console.log('hello'.length);
+// console.log(birthYear.toString().length === 4);
